@@ -4,7 +4,6 @@ import json
 import cv2
 
 addr = 'http://localhost:5000'
-
 endpoint_url = addr + '/api/convert'
 
 content_type = 'image/jpeg'
