@@ -1,0 +1,71 @@
+
+ssh -i ~/.ssh/rsa_key_filename root@xx.xxx.xxx.xxx
+
+
+
+sudo apt-get update
+sudo apt-get install libgl1 -y
+sudo apt install python3.10-venv -y
+
+
+sudo apt install vsftpd -y
+
+sudo useradd -m ftpuser -s /usr/sbin/nologin
+chown -R ftpuser /home/ftpuser
+sudo passwd ftpuser
+
+sudo nano /etc/vsftpd.conf
+
+listen=NO
+listen_ipv6=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+anon_upload_enable=YES
+dirmessage_enable=YES
+use_localtime=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+chroot_local_user=YES
+allow_writeable_chroot=YES
+pasv_enable=Yes
+pasv_min_port=40000
+pasv_max_port=40100
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+ssl_enable=NO
+
+
+
+sudo systemctl restart vsftpd.service
+
+sudo ufw allow 20/tcp
+sudo ufw allow 21/tcp
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer
+
+
+"name": "Bot",
+"type": "python",
+"request": "launch",
+"python": "/Users/am/apps/venv/bin/python",
+"program": "/Users/am/apps/bot.py",
+"console": "integratedTerminal",
+"justMyCode": true,
+"cwd": "/Users/am/apps"
+
+
+
+
+sudo adduser itjim
+usermod -aG sudo itjim
+su - itjim
+
+sudo nano /etc/ssh/sshd_config  
+
+
+sudo systemctl restart sshd.service
